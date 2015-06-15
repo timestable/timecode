@@ -1,0 +1,185 @@
+#include <stdio.h>
+#include <math.h>
+
+void menu();
+
+void fullanalysis()
+{
+	int a; //#_:__
+        int b; //_#:__
+        int c; //__:#_
+        int d; //__:_#
+        int h1; //first hour digit
+        int h2; //second hour digit
+        int i, j, k, l, m, n;
+
+        printf("\n");
+
+        for( m = 1; m < 13; ++m )
+        {
+                if( m < 10 )
+                {
+                        h1 = 0;
+                        h2 = m;
+                }
+                else if( m > 10 )
+                {
+                        h1 = 1;
+                        h2 = ( m - 10);
+                }
+                for( i = 0; i < 6; ++i )
+                {
+                        a = i;
+                        for( j = 0; j < 10; ++j )
+                        {
+                                b = j;
+                                for( k = 0; k < 6; ++k )
+                                {
+                                        c = k;
+                                        for( l = 0; l < 10; ++l )
+                                        {
+                                                d = l;
+                                                printf("%i%i:%i%i:%i%i\n", h1, h2, a, b, c, d);
+				
+						if( (h1==h2 && h1==a && h1==b && h1==c && h1==d) || (h1==0 && h2==a && h2==b && h2==c && h2==d) )
+                                                {
+                                                        printf("PERFECT SYNCHRONICITY\n");
+                                                }
+                                                if( h1==a && h1==c && h2==b && h2==d )
+                                                {
+                                                        printf("REPEATED SYNCHRONICITY\n\n");
+                                                }
+                                                if( h1==d && h2==c && a==b )
+                                                {
+                                                        printf("PALINDROME\n\n");
+                                                }
+}}}}}
+
+menu();
+}
+
+void hrminanalysis()
+{
+	int a; // #_:__
+	int b; // _#:__
+	int c; // __:#_
+	int d; // __:_#
+
+	int i, j, k, l;
+	
+	printf("\n");
+	for( i = 1; i < 13; ++i )
+        {
+                if( i < 10 )
+                {
+                        a = 0;
+                        b = i;
+                }
+                else if( i > 10 )
+                {
+                        a = 1;
+                        b = ( i - 10);
+                }
+		for( j = 0; j < 6; ++j )
+		{
+			c = j;
+			for( k = 0; k < 10; ++k )
+			{
+				d = k;
+				printf("%i%i:%i%i\n", a, b, c, d);				
+
+				if( a==c && b==d )
+				{
+					printf("REPEATED SYNCHRONICITY\n\n");
+				}
+				if( a==b && a==c && a==d )
+				{
+					printf("PERFECT SYNCHRONICITY\n\n");
+				}
+				if( (a==d && b==c) || (a==0 && b==d) )
+				{
+					printf("PANINDROME\n\n");
+				}
+				}}}
+		menu();
+}
+
+void minsecanalysis()
+{
+	int a; // #_:__
+        int b; // _#:__
+        int c; // __:#_
+        int d; // __:_#
+
+        int i, j, k, l;
+
+	printf("\n");
+        for( i = 0; i < 6; ++i )
+        {
+		a = i;
+                for( j = 0; j < 10; ++j )
+                {
+                        b = j;
+                        for( k = 0; k < 6; ++k )
+                        {
+                                c = k;
+				for( l = 0; l < 10; ++l )
+				{
+					d = l;
+					printf("%i%i:%i%i\n", a, b, c, d);					
+
+                                	if( a==c && b==d )
+                                	{
+                                        	printf("REPEATED SYNCHRONICITY\n\n");
+                               		}
+                                	if( a==b && a==c && a==d )
+                                	{
+                                        	printf("PERFECT SYNCHRONICITY\n\n");
+                                	}
+                                	if( (a==d && b==c) || (a==0 && b==d) )
+                                	{
+                                        	printf("PALINDROME\n\n");
+                                	}
+                                }}}}
+menu();
+}
+
+void defs()
+{
+	printf("\nPERFECT SYNCHRONICITY: A PERFECT SYNCHRONICITY occurs when every digit in the time sequence is the same.\n");
+	printf("REPEATED SYNCHRONICITY: A REPEATED SYNCHRONICITY occurs whena group of two digits are repeated\n");
+	printf("    For example, 32:32:32 or 11:11\n");
+	printf("PANINDROME: A PALINDROME occurs when a sequence in the form of aba occurs.\n");
+	printf("    For example, (0)9:09 or 12:55:21.\n");
+
+menu();
+}
+
+void menu()
+{
+	char choice;
+	printf("\nWHAT DO YOU WANT TO DO?\n");
+	printf("Enter 'a', 'b', 'c', 'd', or 'e'.\n");
+        printf("a): run hour-minute-second analysis\nb): run hour-minute analysis\nc): run minute-second analysis\nd): definitions\ne): exit\n\n");
+	choice = getchar();
+
+	if( choice == 'a' ) fullanalysis();
+	else if( choice == 'b' ) hrminanalysis();
+	else if( choice == 'c' ) minsecanalysis();
+	else if( choice == 'd' ) defs();
+	else if( choice == 'e' ) {
+		printf("\n\nThanks for using TSS!\n\n");}
+	else menu();
+
+}
+
+int main (void)
+{
+	printf("\nWELCOME TO THE TIME SYNCHRONICITY SUITE.\n");
+	printf("Written by Gerald L. Sandoval II 6/15/15. \n");
+	printf("Applied Mathematics student at The University of New Mexico\n");
+	printf("Developed and designed to examine curious synchronicities in time. \n");
+	printf("You can send question, comments, concerns, revisions, and add-ons to gerald@unm.edu\n");
+
+	menu();	
+}
